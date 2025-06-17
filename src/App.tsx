@@ -1,4 +1,5 @@
 import { Button } from "./components/ui/button"
+import Todo from "./pages/Todo"
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <h2>hello</h2>
       <Button className="bg-red-400 cursor-pointer">Button</Button>
+      <Todo/>
     </>
   )
 }
