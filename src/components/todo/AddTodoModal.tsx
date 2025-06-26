@@ -4,7 +4,6 @@ import {
   DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -13,15 +12,25 @@ import { Label } from "@/components/ui/label";
 import { Input } from "../ui/input";
 import { useState, type FormEvent } from "react";
 import { CloudCog } from "lucide-react";
+import { useAppDispatch } from "@/redux/feature/hook";
+import { addTodo } from "@/redux/feature/todoSlice";
 
 
 const AddTodoModal = () => {  
   const [tast, setTast] = useState('');
   const [description, setDescription] = useState('');
+  const dispatch = useAppDispatch()
+
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
-  console.log({tast, description});
+    const randomId=Math.random().toString(36).substring(2, 15);
+    const taskDetails = {
+      id: randomId,
+      title: tast,
+      description: description,
+    }
+    dispatch(addTodo(taskDetails));
   }
 
   return (
